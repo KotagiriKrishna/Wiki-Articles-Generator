@@ -1,0 +1,216 @@
+{%- macro infobox( honorific_prefix="0", name="0", honorific_suffix="0",
+image="0", image_upright="0", landscape="0", alt="0", caption="0", native_name="0", native_name_lang="0", pronunciation="0", birth_name="0", birth_date="0",
+birth_place="0", baptised="0", disppeared_date="0", disappeared_place="0", disappeared_status="0", death_date="0", death_place="0", death_cause="0",
+body_discovered="0", resting_place="0", resting_place_coordinates="0", burial_place="0", burial_coordinates="0", monuments="0", nationality="0",
+other_names="0", siglum="0", citizenship="0", education="0", alma_mater="0", occupation="0", years_active="0", era="0", employer="0", organization="0", agent="0",
+known_for="0", notable_works="0", style="0", height="0", television="0", title="0", term="0", predecessor="0", successor="0", party="0", otherparty="0", movement="0",
+opponents="0", boards="0", criminal_charges="0", criminal_penalty="0", criminal_status="0", spouse="0", partner="0", children="0", parents="0", mother="0", father="0",
+relatives="0", family="0", callsign="0", awards="0", website="0", module="0", module2="0", module3="0", module4="0", module5="0", module6="0", signature="0", signature_type="0",
+signature_size="0", signature_alt="0", footnotes="0") -%}
+
+{{ '{{ Infobox Person'}}
+{% if name != '0' %}    | name = {{name}}    {%- endif %}
+{% if birth_date != '0' %}    | birth_date = {{birth_date}}    {%- endif %}
+    | nationality = {{"भारत"}}   
+{% if education != '0' %}    | education = {{education}}    {%- endif %}
+{{'}}'}}
+{%- endmacro -%}
+
+{%- macro intro( name="0", domain ="0", present_work_state="0", present_workplace="0", present_designation="0", address="0", birth_date="0"  ) -%}
+{%-if name != '' and name != '0' -%}
+डॉक्टर {{name}} भारत में{{" "}}
+{%- endif %}
+{%- if domain != "0" and domain != [""] -%}
+{{domain}} क्षेत्र में{{" "}}
+{%- endif -%}
+विशिष्ट वैज्ञानिक हैं।{{" "}}
+{%-if name != '' and name != '0' -%}
+{{name}} वर्तमान में{{" "}}
+{%- endif %}
+{%- if present_work_state != "0" and present_work_state != "" -%}
+{{present_work_state}} में स्थित{{" "}}
+{%- endif %}
+{%- if present_workplace != "0" and present_workplace != "" -%}
+{{present_workplace}}में{{" "}}
+{%- endif %}
+{%- if present_designation != "0" and present_designation != "" -%}
+{{present_designation}}के रूप में कार्यरत हैं।{{" "}}
+{%- endif %}
+
+
+{%-if address != 'nan' and address != '0' -%}
+{{name}} {{address}} में निवास करते हैं। {{" "}}
+{%- endif %}
+
+{%-if birth_date != 'nan' and birth_date != '0' -%}
+{{name}} {{birth_date}}  में जन्मे।{{" "}}
+{%- endif %}
+{%-endmacro-%}
+
+{%- macro study(name="0", Qualification_data="0") -%}
+{{ '==शिक्षा==\n' }}
+{%- if Qualification_data != [] and Qualification_data != '0' -%}
+{%-if name != '' and name != '0' -%}
+डा.{{ name }}{{" "}}
+{%- endif %}
+{%- for qualification, qualification_insti, year in Qualification_data -%}
+{%-if year != '' and year != '0' and year != [] -%}
+{{ year }}में{{" "}}
+{%- endif %}
+{%-if qualification_insti != '' and qualification_insti != '0' and qualification_insti != [] -%}
+{{ qualification_insti }} से{{" "}}
+{%- endif %}
+{%-if qualification != '' and qualification != '0' and qualification != [] -%}
+{{ qualification }} पूरा किया.{{" "}}
+{%- endif %}
+{%- endfor %}
+{%- endif %}
+{%- endmacro -%}
+
+{%- macro job( name ="0", experience_data="0", present_workplace="0")-%}
+{{'==व्यावसायिक अनुभव=='}}
+{%if name != 'nan' and name != '0' -%}
+डा. {{name}} का करियर कई प्रतिष्ठित संस्थानों में फैला हुआ है|
+{% endif -%}
+{% if experience_data != [] and experience_data != '0' -%}
+{%- for exp_year, exp_inst, designation in experience_data -%}
+{%-if exp_year != '' and exp_year != '0' and exp_year != [] -%}   
+{{ exp_year }}{{" "}}
+{%- endif %}
+{%-if exp_inst != '' and exp_inst != '0' and exp_inst != [] -%}
+{{ exp_inst }} में{{" "}}
+{%- endif -%}
+{%- if designation != '' and designation != '0' and designation != [] -%}
+{{ designation }}के रूप में{{" "}}
+{%- endif -%}
+कार्य किया।
+{% endfor %}
+{%- endif %}
+
+{%- if present_workplace != 'nan' and present_workplace != '0' -%}
+नौकरी के कारण {{present_workplace}} में निवास करते थे।{{" "}}
+{%- endif %}
+{%-endmacro-%}
+
+
+{%- macro research( name ="0",research_interests="0", Articles="0", Conferences="0", Books="0",	Projects="0")-%}
+{{ '==शोध और प्रकाशन==\n' }}
+{%- if research_interests != 'nan' and research_interests != '0' -%}
+{%if name != 'nan' and name != '0' -%}
+डा. {{name}} की रुचि वाले शोध क्षेत्र।{{" "}}
+{%- endif %}
+{%- for interest in research_interests -%}
+{%-if interest != '' and interest != '0' and interest != [] -%} 
+{{ interest }}{% if loop.last %} इस पर ध्यान केंद्रित करते हुए, डॉ. {{name}} ने इस क्षेत्र में महत्वपूर्ण योगदान दिया है। {% else %},{% endif %}
+{%- endif %}
+{%- endfor -%}
+{% endif -%}
+
+{{name}} पंडितों (Google Scholar) के आउटपुट में {{" "}}
+{%-if Articles != 'nan' and Articles != '0' -%}
+{{Articles}} जर्नल लेख, {{" "}}
+{%- endif %}
+
+{%-if Conferences != 'nan' and Conferences != '0' -%}
+{{Conferences}} कॉन्फ्रेंस प्रोसीडिंग्स, {{" "}}
+{%- endif %}
+
+{%-if Books != 'nan' and Books != '0' -%}
+{{Books}} पुस्तकें ,{{" "}}
+{%- endif %}
+
+{%-if Projects != 'nan' and Projects != '0' -%}
+{{Projects}} प्रोजेक्ट शामिल हैं।{{" "}}
+{%- endif %}
+यह शैक्षिक समुदाय पर {{name}} के प्रभाव को दर्शाता है।
+
+{%-endmacro-%}
+
+
+{%- macro Honours( name ="0", Awards_data=[])-%}
+{{ '==सम्मान और पुरस्कार==\n' }}
+
+{%- if Awards_data != [] and Awards_data != '0' -%}
+{%- if name != 'nan' and name != '0' -%}
+अपने करियर के दौरान, डॉ. {{name}} ने कई प्रशंसा प्राप्त की हैं
+{% endif -%}
+{%- for award_year, award_inst, award in Awards_data -%}   
+{%-if award_year != '' and award_year != '0' and award_year != [] -%} 
+{{ award_year }}{{" "}}
+{%- endif %}
+{%-if award_inst != '' and award_inst != '0' and award_inst != [] -%} 
+{{ award_inst }} के द्वारा{{" "}}
+{%- endif %}
+{%-if award != '' and award != '0' and award != [] -%} 
+{{ award }}.{{" "}}
+{% endif -%}
+{%- endfor %}
+{%- endif -%}
+{%-endmacro-%}
+
+{%- macro profMemberships( name ="0", profmemb_data=[])-%}
+{{ '==व्यावसायिक सदस्यताएँ==\n' }}
+
+{%-if profmemb_data != [] and profmemb_data != '0' -%}
+{%-if name != 'nan' and name != '0' -%}
+डॉ. {{name}} कई व्यावसायिक संगठनों से जुड़े हुए हैं, जिनमें शामिल हैं|{{" "}}
+{% endif -%}
+{%- for prof_bod, validity in profmemb_data -%} 
+{%-if prof_bod != '' and prof_bod != '0' and prof_bod != [] -%}  
+{{ prof_bod }}{{" "}}
+{%- endif %}
+{%-if validity != '' and validity != '0' and validity != [] -%}
+{{ validity }}.
+{% endif -%}
+{%- endfor %}
+{%- endif -%}
+{%-endmacro-%}
+
+{%- macro categories() -%}
+{%- set line = "[[category:भारत]]\n" -%}
+{{-line-}}
+{%- set line = "[[category: वैज्ञानिक]]\n" -%}
+{{-line-}}
+{%- set line = "[[category:विज्ञान]]\n" -%}
+{{-line-}}
+{%- set line = "[[category:भारतीय वैज्ञानिक ]]\n" -%}
+{{-line-}}
+{%- set line = "[[category:तेविकी वैज्ञानिक ]]\n" -%}
+{{-line-}}
+{%- endmacro -%}
+
+{%- macro references() -%}
+    {{"==स्रोत==\n"}}
+    {%- set line = "1. यह जानकारी विद्वान [ https://vidwan.inflibnet.ac.in/searchc/search |  ] नामक वेबसाइट से संकलित की गई है। \n" -%}
+    {{-line-}}
+{%- endmacro -%}
+
+
+
+
+
+
+{{ infobox( honorific_prefix, name, honorific_suffix,
+image,image_upright,landscape,alt,caption,native_name,native_name_lang,pronunciation,birth_name,birth_date ,
+birth_place,baptised,disppeared_date,disappeared_place,disappeared_status,death_date,death_place,death_cause,
+body_discovered,resting_place,resting_place_coordinates,burial_place,burial_coordinates,monuments,nationality,
+other_names,siglum,citizenship,education ,alma_mater,occupation,years_active,era,employer,organization,agent,
+known_for,notable_works,style,height,television,title,term,predecessor,successor,party,otherparty,movement,
+opponents,boards,criminal_charges,criminal_penalty,criminal_status,spouse,partner,children,parents,mother,father,
+relatives,family,callsign,awards,website,module,module2,module3,module4,module5,module6,signature,signature_type,
+signature_size,signature_alt,footnotes) }}
+
+{{ intro( name, domain, present_work_state, present_workplace, present_designation, address, birth_date  ) }}
+
+{{ study( name, Qualification_data )  }}
+
+{{ job( name, experience_data, present_workplace) }}
+
+{{ research( name,research_interests, Articles, Conferences, Books, Projects) }}
+
+{{ Honours( name , Awards_data) }}
+
+{{ profMemberships( name, profmemb_data) }}
+
+{{ categories() }}
+{{ references() }}
