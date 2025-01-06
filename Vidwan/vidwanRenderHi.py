@@ -58,7 +58,7 @@ def getVDWResearcherData(row ):
     return Scientists_data
 
 def xmlGen(sample_df,template , count, end ):
-    fobj = open('C:/Users/krishna/OneDrive/Documents/Scientists/Hindi xml files/Indian_prof_articles'+str(count)+'.xml', 'w',  encoding='utf-8')
+    fobj = open('Scientists/Hindi xml files/Indian_prof_articles'+str(count)+'.xml', 'w',  encoding='utf-8')
     fobj.write(tewiki + '\n')
 
     # Professor info
@@ -140,12 +140,12 @@ def main():
     template = env.get_template('Hi_sci_template.j2')
 
     #Accessing Data from GOOGLE SHEETS
-    sheet_url = "https://docs.google.com/spreadsheets/d/1u0lzx5kvdl9uSH1E58cSnWNTpeOPw7mUzBff8dgAPos/export?format=csv"
-    df_researchinfo = pd.read_csv(sheet_url , encoding='utf-8')
-    df_researchinfo = df_researchinfo.fillna(0)
+    #sheet_url = "url"
+    #df_researchinfo = pd.read_csv(sheet_url , encoding='utf-8')
+    #df_researchinfo = df_researchinfo.fillna(0)
 
 
-    #df_researchinfo = pd.read_excel("C:/Users/krishna/OneDrive/Documents/Scientists/Datasets/Vidwan_Dataset.xlsx")
+    df_researchinfo = pd.read_excel("Vidwan_Dataset.xlsx")
 
     df_researchinfo = Dataset_processing(df_researchinfo)
     start=0
